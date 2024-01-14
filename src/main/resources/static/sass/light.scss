@@ -1,0 +1,23 @@
+@use 'colors' as c;
+
+body[theme="light"] {
+    background-color: c.$light-background;
+
+    #theme-toggle {
+        background-color: c.$dark-accent;
+        border-color: c.$dark-background;
+    }
+
+    div {
+        background-color: c.$light-accent;
+        border-color: c.$light-border;
+    }
+
+    div:after {
+        background: linear-gradient(
+            transparent,
+            c.$primary,
+            transparent
+        );
+    }
+}

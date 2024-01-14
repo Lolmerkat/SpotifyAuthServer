@@ -1,0 +1,15 @@
+body[theme=dark] {
+  background-color: #191414;
+}
+body[theme=dark] #theme-toggle {
+  background-color: #e4dfdf;
+  border-color: #191414;
+}
+body[theme=dark] div {
+  background-color: #292323;
+  border-color: #433d3d;
+}
+body[theme=dark] div:after {
+  background: linear-gradient(transparent, #1DB954, transparent);
+  box-shadow: #19dd5d 0 0 25px, #19dd5d 0 0 1px;
+}/*# sourceMappingURL=dark.css.map */

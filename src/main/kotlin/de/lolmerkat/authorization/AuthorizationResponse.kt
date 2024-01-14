@@ -1,27 +1,31 @@
 package de.lolmerkat.authorization
 
+import kotlinx.serialization.EncodeDefault
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.io.File
-import java.io.PrintStream
 
-@Serializable
-data class AuthorizationResponse(
-        var code: String? = null,
-        var error: String? = null,
-        var state: String = ""
-) {
-        fun save() {
-                val file = ResponseFile
-                ResponseFile.write(Json.encodeToString(value = this))
+object AuthorizationResponse {
+        @Serializable
+        @OptIn(ExperimentalSerializationApi::class)
+        object Data {
+                var code: String? = null
+                var error: String? = null
+                @EncodeDefault
+                var state: String = ""
         }
-}
 
-object ResponseFile {
         private const val path = "./src/main/resources/response.json"
         private val file = File(path)
-        private val writer = PrintStream(file)
+        private val json: Json = Json { prettyPrint = true }
+
+        val fileContent: String
+                get() = file.readText()
+
+        val data: Data
+                get() = Data
 
         init {
                 if (!file.parentFile.exists())
@@ -31,9 +35,7 @@ object ResponseFile {
                         file.createNewFile()
         }
 
-        fun write(content: String) {
-                writer.println(content)
-                writer.flush()
-                writer.close()
+        fun save() {
+                file.writeText(json.encodeToString(Data))
         }
 }

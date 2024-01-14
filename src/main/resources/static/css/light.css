@@ -1,0 +1,14 @@
+body[theme=light] {
+  background-color: #F1F1F1;
+}
+body[theme=light] #theme-toggle {
+  background-color: #292323;
+  border-color: #191414;
+}
+body[theme=light] div {
+  background-color: #e4dfdf;
+  border-color: #d6cece;
+}
+body[theme=light] div:after {
+  background: linear-gradient(transparent, #1DB954, transparent);
+}/*# sourceMappingURL=light.css.map */

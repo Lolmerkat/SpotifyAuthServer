@@ -5,10 +5,11 @@ import io.ktor.http.*
 object AuthorizationLink {
     private const val clientId: String = "607c609eb4114d729991b1d7f25d380d"
     private const val authUrl: String = "accounts.spotify.com/authorize/"
+    var url: Url
 
     init {
         val linkConfigData = LinkConfig.data
-        val url = URLBuilder(
+        url = URLBuilder(
             protocol = URLProtocol.HTTPS,
             host = authUrl,
             parameters = Parameters.build {
