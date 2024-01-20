@@ -11,7 +11,7 @@ var server: ApplicationEngine? = null
 
 fun initServer(): ApplicationEngine? {
     server =
-        if (server == null) embeddedServer(Netty, port = 8080, host = "127.0.0.1", module = Application::module)
+        if (server == null) embeddedServer(Netty, port = 8080, host = "0.0.0.0", module = Application::module)
         else server
 
     return server

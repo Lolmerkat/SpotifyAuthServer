@@ -1,14 +1,12 @@
 package de.lolmerkat.authorization
 
-import kotlinx.serialization.EncodeDefault
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.encodeToString
+import kotlinx.serialization.*
 import kotlinx.serialization.json.Json
 import java.io.File
 
 object LinkConfig {
     @Serializable
+    @OptIn(ExperimentalSerializationApi::class)
     data class Data (
         // REQUIRED PARAMETER
         @EncodeDefault
