@@ -1,6 +1,7 @@
 package de.lolmerkat.plugins
 
 import de.lolmerkat.authorization.AuthState
+import de.lolmerkat.authorization.AuthState.Companion.remove
 import de.lolmerkat.authorization.AuthorizationResponse
 
 import io.ktor.http.*
@@ -36,10 +37,11 @@ fun Application.configureRouting() {
 
             get {
                 val params: Parameters = call.parameters
+                val requestState = AuthState(params["state"]!!)
                 //call.respond("Code: ${params["code"]}")
 
-                if (!AuthState.currentlyUsedStates.contains(AuthState(params["state"]!!)))
-                    throw Exception("State forgery was detected.")
+                if (!AuthState.currentlyUsedStates.contains(requestState))
+                    throw Exception("Request Cancelled, State forgery was detected.")
 
                 val response = AuthorizationResponse
                 val responseData = response.data
@@ -53,6 +55,7 @@ fun Application.configureRouting() {
                     responseData.error = params["error"]
 
                 response.save()
+                requestState.remove()
             }
         }
     }

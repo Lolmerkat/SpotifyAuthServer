@@ -3,21 +3,29 @@
 body[theme="light"] {
     background-color: c.$light-background;
 
+    p, h1, h2, h3, h4, h5, h6 {
+        color: c.$light-text;
+    }
+
     #theme-toggle {
         background-color: c.$dark-accent;
         border-color: c.$dark-background;
     }
 
-    div {
+    #card {
         background-color: c.$light-accent;
         border-color: c.$light-border;
     }
 
-    div:after {
+    #card:after {
         background: linear-gradient(
             transparent,
             c.$primary,
             transparent
         );
+    }
+
+    fa-icon.fa-solid {
+        color: c.$light-accent;
     }
 }

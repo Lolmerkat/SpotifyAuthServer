@@ -3,24 +3,60 @@
 body[theme="dark"] {
     background-color: c.$dark-background;
 
-    #theme-toggle {
-        background-color: c.$light-accent;
-        border-color: c.$dark-background;
+    p, h1, h2, h3, h4, h5, h6 {
+        color: c.$accent;
     }
 
-    div {
+    #theme-toggle {
+        background-color: c.$primary;
+        border-color: c.$accent;
+        
+        p {
+            color: c.$dark-text-on-light;
+        }
+    }
+
+    #card {
         background-color: c.$dark-accent;
         border-color: c.$dark-border;
+
+        #title-bar {
+            background-color: c.$dark-accent-2;
+
+            #title {
+                #text {
+                    color: c.$accent;
+                }
+            }
+        }
+
+        #card-content {
+            h1 {
+                font-size: 3rem;
+            }
+
+            #callback-result {
+                color: c.$dark-text-on-dark;
+            }
+
+            #callback-params {
+                color: c.$dark-note-on-dark;
+            }
+        }
     }
-    
-    div:after {
+
+    #card:after {
         background: linear-gradient(
             transparent,
-            c.$primary,
+            c.$accent,
             transparent
         );
-        box-shadow: 
-            c.$accent 0 0 25px,
-            c.$accent 0 0 1px;
+        //box-shadow: 
+        //    c.$accent 0 0 25px,
+        //    c.$accent 0 0 1px;
+    }
+
+    fa-icon.fa-solid {
+        color: c.$dark-accent;
     }
 }

@@ -1,15 +1,38 @@
 body[theme=dark] {
   background-color: #191414;
 }
+body[theme=dark] p, body[theme=dark] h1, body[theme=dark] h2, body[theme=dark] h3, body[theme=dark] h4, body[theme=dark] h5, body[theme=dark] h6 {
+  color: #19dd5d;
+}
 body[theme=dark] #theme-toggle {
-  background-color: #e4dfdf;
-  border-color: #191414;
+  background-color: #1DB954;
+  border-color: #19dd5d;
 }
-body[theme=dark] div {
+body[theme=dark] #theme-toggle p {
+  color: #1c1c1c;
+}
+body[theme=dark] #card {
   background-color: #292323;
-  border-color: #433d3d;
+  border-color: #4d4646;
 }
-body[theme=dark] div:after {
-  background: linear-gradient(transparent, #1DB954, transparent);
-  box-shadow: #19dd5d 0 0 25px, #19dd5d 0 0 1px;
+body[theme=dark] #card #title-bar {
+  background-color: #312c2c;
+}
+body[theme=dark] #card #title-bar #title #text {
+  color: #19dd5d;
+}
+body[theme=dark] #card #card-content h1 {
+  font-size: 3rem;
+}
+body[theme=dark] #card #card-content #callback-result {
+  color: #f5e7e7;
+}
+body[theme=dark] #card #card-content #callback-params {
+  color: #9a9999;
+}
+body[theme=dark] #card:after {
+  background: linear-gradient(transparent, #19dd5d, transparent);
+}
+body[theme=dark] fa-icon.fa-solid {
+  color: #292323;
 }/*# sourceMappingURL=dark.css.map */

@@ -6,15 +6,37 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/dark.css">
     <link rel="stylesheet" href="./css/light.css">
+    <!--<script src="https://kit.fontawesome.com/42dce88810.js" crossorigin="anonymous"></script>-->
     <title>Callback</title>
 </head>
 <body name="body" theme="dark">
-    <div>
-        <button id="theme-toggle" onclick="toggleTheme()">
-            Toggle Theme
-        </button>
+    <div id="card">
+        <div id="title-bar">
+            <span id="title">
+                <img id="icon" src="">
+                <p id="text">Spotify Authentication</p>
+            </span>
+        </div>
+
+        <div id="card-content">
+            <h1>Callback</h1>
+            <p id="callback-result">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis eaque adipisci dolorem suscipit hic sapiente neque unde quidem recusandae. Voluptatem dolore excepturi voluptas repellat amet neque voluptatibus dolor nesciunt possimus.
+            </p>
+
+            <div id="callback-params"> 
+                <p>Code: appCode</p>
+                <p>State: appState<p>
+            </div>
+        </div>
     </div>
+
+    <button id="theme-toggle" onclick="toggleTheme()">
+        <fa-icon class="fa-solid fa-lightbulb"></fa-icon>
+        <p>Toggle Theme</p>
+    </button>
 </body>
 
 <script src="js/theme.js"></script>
+<script src="js/callback.js"></script>
 </html>

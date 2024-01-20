@@ -1,6 +1,9 @@
 let themeToggle = document.getElementById("theme-toggle")
 let body = document.getElementsByName("body").item(0)
+let icons = document.getElementsByTagName("fa-icon")
+
 var currentTheme = body.getAttribute("theme")
+
 
 function setTheme(theme) {
     body.setAttribute("theme", theme)
