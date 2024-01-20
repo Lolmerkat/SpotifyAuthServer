@@ -1,8 +1,0 @@
-{
-    "response_type": "code",
-    "redirect_uri": "http://localhost:8080/callback",
-    "state": null,
-    "code_challenge_method": null,
-    "scope": [
-    ]
-}
