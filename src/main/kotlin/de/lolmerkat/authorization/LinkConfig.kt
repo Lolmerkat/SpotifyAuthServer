@@ -31,12 +31,6 @@ object LinkConfig {
     private val file = File(filePath)
     private val json: Json = Json { prettyPrint = true }
 
-    val fileContent: String
-        get() = file.readText()
-
-    val data: LinkConfigData
-        get() = Json.decodeFromString<LinkConfigData>(fileContent)
-
     init {
         if (!file.parentFile.exists())
             file.parentFile.mkdirs()
@@ -45,6 +39,12 @@ object LinkConfig {
             file.createNewFile()
         }
     }
+
+    val fileContent: String
+        get() = file.readText()
+
+    val data: LinkConfigData?
+        get() = try { Json.decodeFromString<LinkConfigData>(fileContent) } catch (exception: Exception) { null }
 
     fun save() {
         file.writeText(json.encodeToString(LinkConfigData))
