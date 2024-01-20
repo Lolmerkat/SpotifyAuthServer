@@ -11,5 +11,9 @@ class AuthState(val value: String) {
             currentlyUsedStates.add(generatedState)
             return generatedState
         }
+
+        fun AuthState.remove() {
+            currentlyUsedStates.remove(this)
+        }
     }
 }
