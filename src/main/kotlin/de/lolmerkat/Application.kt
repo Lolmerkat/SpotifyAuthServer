@@ -2,9 +2,6 @@ package de.lolmerkat
 
 import de.lolmerkat.authorization.AuthState
 import de.lolmerkat.authorization.AuthorizationLink
-import de.lolmerkat.authorization.LinkConfig
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 
 
 //fun main(): Unit = runBlocking {
@@ -18,7 +15,6 @@ fun main() {
 
     val link = AuthorizationLink.url
     println(link)
-    println(Json.encodeToString(LinkConfig.Data()))
 
     initServer()
     start(wait = true)
