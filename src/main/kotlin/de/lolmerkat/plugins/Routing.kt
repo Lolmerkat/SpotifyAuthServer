@@ -3,7 +3,6 @@ package de.lolmerkat.plugins
 import de.lolmerkat.authorization.AuthState
 import de.lolmerkat.authorization.AuthState.Companion.remove
 import de.lolmerkat.authorization.AuthorizationResponse
-
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.http.content.*
@@ -11,52 +10,29 @@ import io.ktor.server.routing.*
 
 fun Application.configureRouting() {
     routing {
-        //get("/callback") {
-        //    val params: Parameters = call.parameters
-        //    //call.respond("Code: ${params["code"]}")
-//
-        //    if (!AuthState.currentlyUsedStates.contains(AuthState(params["state"]!!)))
-        //        throw Exception("State forgery was detected.")
-//
-        //    val response = AuthorizationResponse()
-        //    response.state = params["state"]!!
-//
-        //    if (params.contains("code"))
-        //        response.code = params["code"]
-//
-        //    if (params.contains("error"))
-        //        response.error = params["error"]
-//
-        //    response.save()
-        //}
+        staticResources("/callback", "static", index = "index.html")
 
+        get {
+            val params: Parameters = call.parameters
+            val requestState = AuthState(params["state"]!!)
+            //call.respond("Code: ${params["code"]}")
 
+            if (!AuthState.currentlyUsedStates.contains(requestState))
+                throw Exception("Request Cancelled, State forgery was detected.")
 
-        staticResources("/callback", "static") {
-            enableAutoHeadResponse()
+            val response = AuthorizationResponse
+            val responseData = response.data
 
-            get {
-                val params: Parameters = call.parameters
-                val requestState = AuthState(params["state"]!!)
-                //call.respond("Code: ${params["code"]}")
+            responseData.state = params["state"]!!
 
-                if (!AuthState.currentlyUsedStates.contains(requestState))
-                    throw Exception("Request Cancelled, State forgery was detected.")
+            if (params.contains("code"))
+                responseData.code = params["code"]
 
-                val response = AuthorizationResponse
-                val responseData = response.data
+            if (params.contains("error"))
+                responseData.error = params["error"]
 
-                responseData.state = params["state"]!!
-
-                if (params.contains("code"))
-                    responseData.code = params["code"]
-
-                if (params.contains("error"))
-                    responseData.error = params["error"]
-
-                response.save()
-                requestState.remove()
-            }
+            response.save()
+            requestState.remove()
         }
     }
 }
