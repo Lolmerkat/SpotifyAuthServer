@@ -10,29 +10,29 @@ import io.ktor.server.routing.*
 
 fun Application.configureRouting() {
     routing {
-        staticResources("/callback", "static", index = "index.html")
+        staticResources("/callback", "static", index = "index.html") {
+            get {
+                val params: Parameters = call.parameters
+                val requestState = AuthState(params["state"]!!)
+                //call.respond("Code: ${params["code"]}")
 
-        get {
-            val params: Parameters = call.parameters
-            val requestState = AuthState(params["state"]!!)
-            //call.respond("Code: ${params["code"]}")
+                if (!AuthState.currentlyUsedStates.contains(requestState))
+                    throw Exception("Request Cancelled, State forgery was detected.")
 
-            if (!AuthState.currentlyUsedStates.contains(requestState))
-                throw Exception("Request Cancelled, State forgery was detected.")
+                val response = AuthorizationResponse
+                val responseData = response.data
 
-            val response = AuthorizationResponse
-            val responseData = response.data
+                responseData.state = params["state"]!!
 
-            responseData.state = params["state"]!!
+                if (params.contains("code"))
+                    responseData.code = params["code"]
 
-            if (params.contains("code"))
-                responseData.code = params["code"]
+                if (params.contains("error"))
+                    responseData.error = params["error"]
 
-            if (params.contains("error"))
-                responseData.error = params["error"]
-
-            response.save()
-            requestState.remove()
+                response.save()
+                requestState.remove()
+            }
         }
     }
 }
