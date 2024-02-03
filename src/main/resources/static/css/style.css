@@ -33,10 +33,11 @@ body #card {
 }
 body #card #title-bar {
   display: flex;
-  height: 10%;
+  height: 12.5%;
   flex-direction: row;
   padding-left: 1.5rem;
   border-radius: 2rem 2rem 0 0;
+  align-items: center;
 }
 body #card #title-bar #title {
   height: fit-content;
@@ -45,12 +46,11 @@ body #card #title-bar #title {
   gap: 1rem;
 }
 body #card #title-bar #title #icon {
-  aspect-ratio: 1;
-  height: 75%;
-  border: 1px solid lime;
+  height: 4.5vh;
 }
 body #card #title-bar #title #text {
-  height: 50%;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 body #card #card-content {
   padding-left: 2rem;
@@ -77,6 +77,7 @@ body #card #card-content #callback-params {
   margin-bottom: 2rem;
   margin-top: auto;
   display: flex;
+  justify-content: space-between;
 }
 body #card:after {
   content: "";

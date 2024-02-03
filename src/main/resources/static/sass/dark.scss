@@ -12,7 +12,7 @@ body[theme="dark"] {
         border-color: c.$accent;
         
         p {
-            color: c.$dark-text-on-light;
+            color: c.$text-on-light;
         }
     }
 
@@ -36,11 +36,11 @@ body[theme="dark"] {
             }
 
             #callback-result {
-                color: c.$dark-text-on-dark;
+                color: c.$text-on-dark;
             }
 
-            #callback-params {
-                color: c.$dark-note-on-dark;
+            #callback-params > p {
+                color: c.$note-on-dark;
             }
         }
     }

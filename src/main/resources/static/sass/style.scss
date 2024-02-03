@@ -36,10 +36,11 @@ body {
 
         #title-bar {
             display: flex;
-            height: 10%;
+            height: 12.5%;
             flex-direction: row;
             padding-left: 1.5rem;
             border-radius: 2rem 2rem 0 0;
+            align-items: center;
             
             #title {
                 //border: 1px solid lime;
@@ -49,13 +50,14 @@ body {
                 gap: 1rem;
 
                 #icon {
-                    aspect-ratio: 1;
-                    height: 75%;
-                    border: 1px solid lime;
+                    height: 4.5vh;
+                    //border: 1px solid lime;
                 }
 
                 #text {
-                    height: 50%;
+                    font-size: 1.5em;
+                    font-weight: bold;
+                    //height: 50%;
                 }
             }
         }
@@ -84,11 +86,13 @@ body {
             }
 
             #callback-params {
+                //border: 1px solid lime;
                 width: 100%;
                 margin-bottom: 2rem;
                 margin-top: auto;
 
                 display: flex;
+                justify-content: space-between;
             }
         }
     }

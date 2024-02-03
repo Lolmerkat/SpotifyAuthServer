@@ -27,7 +27,7 @@ body[theme=dark] #card #card-content h1 {
 body[theme=dark] #card #card-content #callback-result {
   color: #f5e7e7;
 }
-body[theme=dark] #card #card-content #callback-params {
+body[theme=dark] #card #card-content #callback-params > p {
   color: #9a9999;
 }
 body[theme=dark] #card:after {

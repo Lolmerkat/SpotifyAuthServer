@@ -4,25 +4,56 @@ body[theme="light"] {
     background-color: c.$light-background;
 
     p, h1, h2, h3, h4, h5, h6 {
-        color: c.$light-text;
+        color: c.$accent;
     }
 
     #theme-toggle {
-        background-color: c.$dark-accent;
-        border-color: c.$dark-background;
+        background-color: c.$primary;
+        border-color: c.$accent;
+        
+        p {
+            color: c.$text-on-dark;
+        }
     }
 
     #card {
         background-color: c.$light-accent;
         border-color: c.$light-border;
+
+        #title-bar {
+            background-color: c.$light-accent-2;
+
+            #title {
+                #text {
+                    color: c.$accent;
+                }
+            }
+        }
+
+        #card-content {
+            h1 {
+                font-size: 3rem;
+            }
+
+            #callback-result {
+                color: c.$text-on-light;
+            }
+
+            #callback-params > p {
+                color: c.$note-on-light;
+            }
+        }
     }
 
     #card:after {
         background: linear-gradient(
             transparent,
-            c.$primary,
+            c.$accent,
             transparent
         );
+        //box-shadow: 
+        //    c.$accent 0 0 25px,
+        //    c.$accent 0 0 1px;
     }
 
     fa-icon.fa-solid {
