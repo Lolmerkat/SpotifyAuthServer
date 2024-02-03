@@ -38,9 +38,8 @@ object LinkConfig {
 
         if (!file.exists()) {
             file.createNewFile()
+            saveDefault()
         }
-
-        save()
     }
 
     val fileContent: String
@@ -49,7 +48,7 @@ object LinkConfig {
     val data: Data
         get() = Json.decodeFromString<Data>(fileContent)
 
-    fun save() {
+    fun saveDefault() {
         file.writeText(json.encodeToString(Data()))
     }
 }

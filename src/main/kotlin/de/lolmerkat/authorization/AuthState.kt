@@ -2,18 +2,12 @@ package de.lolmerkat.authorization
 
 import de.lolmerkat.extensions.generateRandomString
 
-class AuthState(val value: String) {
-    companion object {
-        val currentlyUsedStates = ArrayList<AuthState>()
+object AuthState {
+    val currentlyUsedStates = ArrayList<String>()
 
-        fun generate(): AuthState {
-            val generatedState = AuthState(generateRandomString(64))
-            currentlyUsedStates.add(generatedState)
-            return generatedState
-        }
-
-        fun AuthState.remove() {
-            currentlyUsedStates.remove(this)
-        }
+    fun generate(): String{
+        val generatedState = generateRandomString(64)
+        currentlyUsedStates.add(generatedState)
+        return generatedState
     }
 }

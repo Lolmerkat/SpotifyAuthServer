@@ -30,6 +30,7 @@ body {
         position: relative;
         height: 45vh;
         aspect-ratio: 1.5;
+        width: min-content;
         border-radius: 2rem;
         border-width: 1px;
         border-style: solid;
@@ -90,9 +91,11 @@ body {
                 width: 100%;
                 margin-bottom: 2rem;
                 margin-top: auto;
+                font-size: 0.75em;
 
                 display: flex;
-                justify-content: space-between;
+                flex-direction: column;
+                gap: 1em;
             }
         }
     }

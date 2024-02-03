@@ -1,29 +1,33 @@
 package de.lolmerkat.authorization
 
+import de.lolmerkat.CredentialProperties
 import io.ktor.http.*
 
 object AuthorizationLink {
-    private const val clientId: String = "607c609eb4114d729991b1d7f25d380d"
     private const val authUrl: String = "accounts.spotify.com/authorize/"
     var url: Url
 
     init {
         val linkConfigData = LinkConfig.data
+        val credentials = CredentialProperties.data
         url = URLBuilder(
             protocol = URLProtocol.HTTPS,
             host = authUrl,
             parameters = Parameters.build {
-                append("client_id", clientId)
+                credentials.clientId?.let {
+                    append("client_id", it)
+                }
                 append("response_type", linkConfigData.responseType)
                 append("redirect_uri", linkConfigData.redirectUri)
                 linkConfigData.state?.let { append("state", it) }
                 linkConfigData.codeChallengeMethod?.let {
-                    val codeChallenge: String = "" //TODO: GENERATE
+                    val codeChallenge: String = CodeChallenge.generateChallenge()
                     
                     append("code_challenge_method", it)
                     append("code_challenge", codeChallenge)
                 }
                 append("scope", linkConfigData.scope.toParamString())
+                append("state", AuthState.generate())
             }
         ).build()
     }

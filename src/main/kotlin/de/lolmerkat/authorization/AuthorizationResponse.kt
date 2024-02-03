@@ -10,12 +10,12 @@ import java.io.File
 object AuthorizationResponse {
         @Serializable
         @OptIn(ExperimentalSerializationApi::class)
-        object Data {
-                var code: String? = null
-                var error: String? = null
+        data class Data(
+                var code: String? = null,
+                var error: String? = null,
                 @EncodeDefault
                 var state: String = ""
-        }
+        )
 
         private const val path = "./src/main/resources/response.json"
         private val file = File(path)
@@ -25,17 +25,19 @@ object AuthorizationResponse {
                 get() = file.readText()
 
         val data: Data
-                get() = Data
+                get() = Data()
 
         init {
-                if (!file.parentFile.exists())
-                        file.parentFile.mkdirs()
+            if (!file.parentFile.exists())
+                    file.parentFile.mkdirs()
 
-                if (!file.exists())
-                        file.createNewFile()
+            if (!file.exists()) {
+                    file.createNewFile()
+                    save(Data())
+            }
         }
 
-        fun save() {
-                file.writeText(json.encodeToString(Data))
+        fun save(data: Data) {
+            file.writeText(json.encodeToString(data))
         }
 }
